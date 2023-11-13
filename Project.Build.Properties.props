@@ -1,0 +1,48 @@
+<Project>
+
+  <!--
+    PROPERTIES
+  -->
+
+  <PropertyGroup>
+    <WinExeTargetFrameworks>net8.0-windows</WinExeTargetFrameworks>
+    <WinTestTargetFrameworks>net8.0-windows</WinTestTargetFrameworks>
+    <WinLibTargetFrameworks>net8.0-windows;net7.0-windows;net6.0-windows;net48</WinLibTargetFrameworks>
+    <ExeTargetFrameworks>net8.0</ExeTargetFrameworks>
+    <TestTargetFrameworks>net8.0;net7.0;net6.0;net48</TestTargetFrameworks>
+    <LibTargetFrameworks>net8.0;net7.0;net6.0;net48</LibTargetFrameworks>
+
+    <LangVersion>latest</LangVersion>
+
+    <!--
+      CA2252: Opt in to preview features before using them
+      https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca2252
+    -->
+    <EnablePreviewFeatures>false</EnablePreviewFeatures>
+
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+
+    <AssemblyOriginatorKeyFileName>public.snk</AssemblyOriginatorKeyFileName>
+
+    <ReportAnalyzer>false</ReportAnalyzer>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Product>Wpf.Effects</Product>
+    <Authors>Maximilian Haru Raditya</Authors>
+    <CurrentYear>$([System.DateTime]::Now.ToString("yyyy"))</CurrentYear>
+    <Copyright>Copyright (c) 2008-$(CurrentYear) Wpf.Effects - https://github.com/mahara/Wpf.Effects</Copyright>
+
+    <PackageTags>wpf, effects, wpfeffects</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/mahara/Wpf.Effects</PackageProjectUrl>
+    <!--<PackageIcon>Wpf.Effects.png</PackageIcon>-->
+    <RepositoryUrl>https://github.com/mahara/Wpf.Effects</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--<Content Include="$(WorkspaceFolderPath)docs\images\Wpf.Effects.png" Link="Properties\Wpf.Effects.png" Pack="true" PackagePath="\" />-->
+  </ItemGroup>
+
+</Project>

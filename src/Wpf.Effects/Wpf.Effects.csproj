@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>$(WinLibTargetFrameworks)</TargetFrameworks>
+    <!--
+        https://learn.microsoft.com/en-us/dotnet/core/tools/sdk-errors/netsdk1100
+    -->
+    <EnableWindowsTargeting Condition="!$([MSBuild]::IsOSPlatform('Windows'))">true</EnableWindowsTargeting>
+
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <!--
+    https://learn.microsoft.com/en-us/dotnet/standard/library-guidance/nuget
+  -->
+  <PropertyGroup>
+    <AssemblyName>Wpf.Effects</AssemblyName>
+    <RootNamespace>Wpf.Effects</RootNamespace>
+
+    <Title>Wpf.Effects</Title>
+    <Description>Wpf.Effects</Description>
+
+    <PackageId>Wpf.Effects</PackageId>
+    <PackageDescription>Wpf.Effects</PackageDescription>
+    <PackageTags>Wpf; Effects; Wpf.Effects</PackageTags>
+    <!--<GeneratePackageOnBuild>true</GeneratePackageOnBuild>-->
+  </PropertyGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">
+  </ItemGroup>
+  <ItemGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net48'))">
+    <PackageReference Include="Nullable" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="**\*.ps" />
+  </ItemGroup>
+
+</Project>

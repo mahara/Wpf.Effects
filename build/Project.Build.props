@@ -1,0 +1,133 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!--
+    https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props
+    https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-your-build
+    https://learn.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties
+    https://learn.microsoft.com/en-us/cpp/build/reference/common-macros-for-build-commands-and-properties
+    https://learn.microsoft.com/en-us/dotnet/standard/library-guidance/nuget
+    https://github.com/castleproject/Core/pull/616
+  -->
+
+  <!--
+    PROPERTIES
+  -->
+
+  <PropertyGroup>
+    <WinExeTargetFrameworks Condition="'$(WinExeTargetFrameworks)' == ''">net9.0-windows</WinExeTargetFrameworks>
+    <WinExeTestTargetFrameworks Condition="'$(WinExeTestTargetFrameworks)' == ''">net9.0-windows</WinExeTestTargetFrameworks>
+    <WinLibTargetFrameworks Condition="'$(WinLibTargetFrameworks)' == ''">net9.0-windows;net48</WinLibTargetFrameworks>
+    <ExeTargetFrameworks Condition="'$(ExeTargetFrameworks)' == ''">net9.0</ExeTargetFrameworks>
+    <ExeTestTargetFrameworks Condition="'$(ExeTestTargetFrameworks)' == ''">net9.0;net8.0;net48</ExeTestTargetFrameworks>
+    <LibTargetFrameworks Condition="'$(LibTargetFrameworks)' == ''">net9.0;net8.0;net48</LibTargetFrameworks>
+
+    <LangVersion Condition="'$(LangVersion)' == ''">latest</LangVersion>
+    <ImplicitUsings Condition="'$(ImplicitUsings)' == ''">enable</ImplicitUsings>
+    <Nullable Condition="'$(Nullable)' == ''">enable</Nullable>
+
+    <!--
+      CA2252: Opt in to preview features before using them
+      https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca2252
+    -->
+    <EnablePreviewFeatures Condition="'$(EnablePreviewFeatures)' == ''">true</EnablePreviewFeatures>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ReportAnalyzer Condition="'$(ReportAnalyzer)' == ''">false</ReportAnalyzer>
+
+    <TreatWarningsAsErrors Condition="'$(TreatWarningsAsErrors)' == ''">false</TreatWarningsAsErrors>
+    <WarningsAsErrors>$(WarningsAsErrors)</WarningsAsErrors>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <!--<NoWarn>$(NoWarn);CS0612;CS0618</NoWarn>-->
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BuildVersion>0.0.0</BuildVersion>
+    <BuildVersion Condition="'$(APPVEYOR_BUILD_VERSION)' != ''">$(APPVEYOR_BUILD_VERSION)</BuildVersion>
+    <BuildVersionMajor>$(BuildVersion.Split('.')[0])</BuildVersionMajor>
+    <BuildVersionNoSuffix>$(BuildVersion.Split('-')[0])</BuildVersionNoSuffix>
+
+    <AssemblyOriginatorKeyFileName Condition="'$(AssemblyOriginatorKeyFileName)' == ''">public.snk</AssemblyOriginatorKeyFileName>
+    <AssemblyOriginatorKeyFile Condition="'$(AssemblyOriginatorKeyFile)' == ''">$(BuildConfigurationFolderPath)$(AssemblyOriginatorKeyFileName)</AssemblyOriginatorKeyFile>
+    <SignAssembly Condition="'$(SignAssembly)' == ''">true</SignAssembly>
+
+    <GenerateDocumentationFile Condition="'$(GenerateDocumentationFile)' == ''">true</GenerateDocumentationFile>
+
+    <RepositoryType Condition="'$(RepositoryType)' == ''">git</RepositoryType>
+    <RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://github.com/mahara/Framework</RepositoryUrl>
+  </PropertyGroup>
+
+  <!--
+    https://learn.microsoft.com/en-us/dotnet/standard/library-guidance/nuget
+  -->
+  <PropertyGroup>
+    <Product Condition="'$(Product)' == ''">Framework</Product>
+    <Title Condition="'$(Title)' == ''">$(Product)</Title>
+    <Description Condition="'$(Description)' == ''">$(Product)</Description>
+    <Authors Condition="'$(Authors)' == ''">Maximilian Haru Raditya</Authors>
+    <CurrentYear Condition="'$(CurrentYear)' == ''">$([System.DateTime]::Now.ToString("yyyy"))</CurrentYear>
+    <Copyright Condition="'$(Copyright)' == ''">Copyright (c) 2008-$(CurrentYear) Framework - https://github.com/mahara/Framework</Copyright>
+
+    <VersionPrefix>$(BuildVersion)</VersionPrefix>
+    <AssemblyVersion>$(BuildVersionMajor).0.0</AssemblyVersion>
+    <FileVersion>$(BuildVersionNoSuffix)</FileVersion>
+
+    <PackageLicenseExpression Condition="'$(PackageLicenseExpression)' == ''">MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance Condition="'$(PackageRequireLicenseAcceptance)' == ''">false</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl Condition="'$(PackageProjectUrl)' == ''">https://github.com/mahara/Framework</PackageProjectUrl>
+    <!--<PackageIcon Condition="'$(PackageIcon)' == ''">Framework.png</PackageIcon>-->
+    <PackageTags Condition="'$(PackageTags)' == ''">$(Product)</PackageTags>
+    <PackageVersion>$(BuildVersion)</PackageVersion>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <ContentTargetFolders>.</ContentTargetFolders>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <IncludeSource>false</IncludeSource>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(WorkspaceFolderPath)README.md" Link="Properties\README.md" Pack="true" PackagePath="\" />
+    <None Include="$(WorkspaceFolderPath)CHANGELOG.md" Link="Properties\CHANGELOG.md" Pack="true" PackagePath="\" />
+    <None Include="$(WorkspaceFolderPath)LICENSE" Link="Properties\LICENSE" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <DiagnosticsConstants>DEBUG</DiagnosticsConstants>
+    <NetConstants>TRACE</NetConstants>
+    <NetFrameworkConstants>TRACE</NetFrameworkConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)|$(Configuration)' == 'net48|Debug'">
+    <DefineConstants>$(DiagnosticsConstants);$(NetFrameworkConstants)</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)|$(Configuration)' == 'net48|Release'">
+    <DefineConstants>$(NetFrameworkConstants)</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CSharpIsNullAnalyzer">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0' OR '$(TargetFramework)' == 'net8.0'">
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="IndexRange" />
+    <!--
+      https://github.com/Microsoft/dotnet/tree/main/releases/reference-assemblies
+      https://andrewlock.net/using-reference-assemblies-to-build-net-framework-libararies-on-linux-without-mono/
+    -->
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" />
+    <PackageReference Include="Nullable">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="$(BuildConfigurationFolderPath)AssemblyInfo.Global.cs" Link="Properties\AssemblyInfo.Global.cs" />
+  </ItemGroup>
+
+</Project>

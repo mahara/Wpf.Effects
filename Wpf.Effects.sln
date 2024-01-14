@@ -1,0 +1,70 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{90DEA5C9-004C-4837-AFFE-C3431D578DBE}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		CHANGELOG.md = CHANGELOG.md
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{EB39C37F-6FA9-41F5-A3BB-7B0CDE13B744}"
+	ProjectSection(SolutionItems) = preProject
+		BuildPackages.cmd = BuildPackages.cmd
+		CleanPackages.cmd = CleanPackages.cmd
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		Directory.Packages.props = Directory.Packages.props
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{00FE75D7-44A0-44D5-AAA3-9BB06D363C4B}"
+	ProjectSection(SolutionItems) = preProject
+		build\AssemblyInfo.Global.cs = build\AssemblyInfo.Global.cs
+		build\BuildPackages.cmd = build\BuildPackages.cmd
+		build\Project.Build.props = build\Project.Build.props
+		build\Project.Build.targets = build\Project.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Actions", "GitHub Actions", "{E67A89F6-29B0-4BA9-9A04-4413E581929C}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EC82B46E-A3AB-4940-ABD1-2A38FF26269B}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+		src\Directory.Build.targets = src\Directory.Build.targets
+		src\Project.Build.References.props = src\Project.Build.References.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf.Effects", "src\Wpf.Effects\Wpf.Effects.csproj", "{227A15EA-618A-499E-A5D4-3F78B7A42B92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{227A15EA-618A-499E-A5D4-3F78B7A42B92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{227A15EA-618A-499E-A5D4-3F78B7A42B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{227A15EA-618A-499E-A5D4-3F78B7A42B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{227A15EA-618A-499E-A5D4-3F78B7A42B92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EB39C37F-6FA9-41F5-A3BB-7B0CDE13B744} = {90DEA5C9-004C-4837-AFFE-C3431D578DBE}
+		{00FE75D7-44A0-44D5-AAA3-9BB06D363C4B} = {EB39C37F-6FA9-41F5-A3BB-7B0CDE13B744}
+		{E67A89F6-29B0-4BA9-9A04-4413E581929C} = {EB39C37F-6FA9-41F5-A3BB-7B0CDE13B744}
+		{EC82B46E-A3AB-4940-ABD1-2A38FF26269B} = {EB39C37F-6FA9-41F5-A3BB-7B0CDE13B744}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E971B0DB-D6FE-4200-98BE-A5BD9BE89EAF}
+	EndGlobalSection
+EndGlobal

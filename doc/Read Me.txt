@@ -1,0 +1,18 @@
+================
+KNOWLEDGE BASE
+================
+
+-   Games for Windows and the DirectX SDK blog
+    https://walbourn.github.io/
+
+-   Compiling .fx to .ps (requires HLSL effect compiler [fxc.exe] of DirectX SDK installed, included in Windows SDK)
+
+        C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64
+            C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Utilities\bin\x64
+
+        fxc.exe /T ps_3_0 /Fo [OutputEffectName].ps [InputEffectName].fx
+
+        fxc.exe /T ps_3_0 /Fo GrayscaleEffect.ps GrayscaleEffect.fx
+
+
+

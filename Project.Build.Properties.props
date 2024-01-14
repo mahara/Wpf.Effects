@@ -1,0 +1,25 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!--
+    PROPERTIES
+  -->
+
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFileName>public.snk</AssemblyOriginatorKeyFileName>
+
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/mahara/Wpf.Effects</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Product>Wpf.Effects</Product>
+    <Authors>Maximilian Haru Raditya</Authors>
+    <CurrentYear>$([System.DateTime]::Now.ToString("yyyy"))</CurrentYear>
+    <Copyright>Copyright (c) 2008-$(CurrentYear) Wpf.Effects - https://github.com/mahara/Wpf.Effects</Copyright>
+
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/mahara/Wpf.Effects</PackageProjectUrl>
+    <!--<PackageIcon>Wpf.Effects.png</PackageIcon>-->
+  </PropertyGroup>
+
+</Project>

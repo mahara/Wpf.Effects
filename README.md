@@ -4,4 +4,4 @@ Wpf.Effects
 
 ## License
 
-Wpf.Effects is &copy; 2008-2023 Maximilian Haru Raditya. It is licensed under the terms of the [MIT](https://opensource.org/license/mit/) license.
+Wpf.Effects is &copy; 2008-2024 Maximilian Haru Raditya. It is licensed under the terms of the [MIT](https://opensource.org/license/mit/) license.

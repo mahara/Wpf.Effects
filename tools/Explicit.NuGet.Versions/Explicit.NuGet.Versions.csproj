@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>$(ExeTargetFrameworks)</TargetFrameworks>
+
+    <OutputType>Exe</OutputType>
+
+    <OutputPath>$(ArtifactsFolderPath)tools\nev\</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
+
+    <AssemblyName>nev</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ProDotNetZip" />
+  </ItemGroup>
+
+</Project>

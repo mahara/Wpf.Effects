@@ -1,7 +1,7 @@
 # Wpf.Effects - Changelog
 
 
-## 9.0.0 (2024-xx-xx)
+## 9.0.0 (2025-11-11)
 
 Improvements:
 - Added **`.NET 9.0`** support.

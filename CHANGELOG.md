@@ -1,6 +1,15 @@
 # Wpf.Effects - Changelog
 
 
+## 11.0.0 (2026-xx-xx)
+
+Improvements:
+- Added support for **`.NET 11.0`**.
+
+Breaking Changes:
+- Removed support for **`.NET 9.0`** and **`.NET 8.0`**.
+
+
 ## 10.0.0 (2026-02-24)
 
 Improvements:
